@@ -15,6 +15,7 @@ require 'connect.php'; //เชื่อมฐานข้อมูล
 
   <!-- Bootstrap -->
   <link href="bootstrap_5/css/bootstrap.min.css" rel="stylesheet">
+  <link href="bootstrap_5/css/style.css" rel="stylesheet">
 
 
 
@@ -26,18 +27,17 @@ require 'connect.php'; //เชื่อมฐานข้อมูล
 
 
   <div class="mt-5 container text-center">
-    <div class="row">
-      <div class="col-12">
-        <img src="images/h.png" alt="" width="100%" height="100%">
-      </div>
-    </div>
+  <?php include "./components/banner.php" ?>
     <div class="container">
       <h3 class="mt-3 text-danger">
         <marquee direction="left">เข้าสู่ระบบครั้งแรก กรุณาเปลี่ยนรหัสผ่าน.ด้วยความปรารถณาดี โรงพยาบาลสมเด็จ</marquee>
       </h3>
     </div>
     <div class="row">
-      <a href="admin.php"><img src="images/key-2-2.png" width="90" height="90"></a>
+      <div class="col-md-6 offset-md-3">
+        <a href="admin.php"><img src="images/key-2-2.png" width="90" height="90"></a>
+      </div>
+
       <div class="mt-5 col-md-6 offset-md-3">
         <form class="mb-3" name="form1" method="post" action="check_login.php">
           <div class="form-group mb-3">
@@ -54,35 +54,25 @@ require 'connect.php'; //เชื่อมฐานข้อมูล
     </div>
   </div>
 
-  <div class="text-center mt-5 col-12">
-  
+  <div class="text-center mb-5 mt-5 col-12">
 
-<h5>ติดปัญหาการเข้าใช้งาน</h5>
-<h6>ติดต่อ กลุ่มงานการเงิน นางสาวปลื้มกมล ภารพัฒน์ (ปลื้ม) การเงินและบัญชี 311 หรือ </h6>
-<h6>ติดต่อ นายนรากร ศิริกุล (ต้น) นักวิชาคอมพิวเตอร์ ผู้ดูแลระบบ เบอร์โทรภายใน 155 หรือ 156</h6>
-<p>&nbsp;</p>
-<h6>
-  จำนวนผู้เข้าใช้งาน <font size='3' color="red">
-      <?php
-      $sql = "SELECT COUNT(id_save_time_login) as ttt from save_time_login";
-      $result = mysqli_query($condb, $sql) or die("Error in query: $sql " . mysqli_error($conn));
-      $row = mysqli_fetch_array($result);
-      extract($row);
-      ?>
-      <?php echo number_format($row['ttt']); ?> </font> คน
-</h6>
-</font>
+    <h5>ติดปัญหาการเข้าใช้งาน</h5>
+    <h6>ติดต่อ กลุ่มงานการเงิน นางสาวปลื้มกมล ภารพัฒน์ (ปลื้ม) การเงินและบัญชี 311 หรือ </h6>
+    <h6 class="mt-3">
+      จำนวนผู้เข้าใช้งาน <font size='3' color="red">
+        <?php
+        $sql = "SELECT COUNT(id_save_time_login) as ttt from save_time_login";
+        $result = mysqli_query($condb, $sql) or die("Error in query: $sql " . mysqli_error($conn));
+        $row = mysqli_fetch_array($result);
+        extract($row);
+        ?>
+        <?php echo number_format($row['ttt']); ?> </font> คน
+    </h6>
+    </font>
   </div>
 
 
 
 
-  
 
-
-
-
-</body>
-<script type="text/javascript" src="bootstrap_5/js/bootstrap.bundle.js"></script>
-
-</html>
+  <?php include "./components/footer.php" ?>
