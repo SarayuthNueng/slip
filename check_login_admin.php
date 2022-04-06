@@ -1,210 +1,62 @@
 <?php
 session_start();
-$error="Username หรือ Password ไม่ถูกต้อง!!</h1>";
+$error = "Username หรือ Password ไม่ถูกต้อง!!</h1>";
 require 'connect.php';
-  
-	$strSQL = "SELECT * FROM admin_login  WHERE username = '".mysqli_real_escape_string($condb,$_POST['txtUsername'])."' and password = '".mysqli_real_escape_string($condb,$_POST['txtPassword'])."'";
-	$objQuery = mysqli_query($condb,$strSQL);
-	$objResult = mysqli_fetch_array($objQuery);
-	$_SESSION['name'] = $objResult['name'];
-	$_SESSION['id_admin'] = $objResult['id_admin'];
 
-	if(!$objResult)
-	
-	{?>
-			<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>ระบบ Slip ออนไลน์</title><style type="text/css">
-/* css แบ่งหน้า */
-.browse_page{   
-    clear:both;   
-    margin-left:12px;   
-    height:25px;   
-    margin-top:5px;   
-    display:block;   
-}   
-.browse_page a,.browse_page a:hover{   
-    display:block;   
-	width: 2%;
-    font-size:14px;   
-    float:left;   
-    margin:0px 5px;
-    border:1px solid #CCCCCC;   
-    background-color:#F4F4F4;   
-    color:#333333;   
-    text-align:center;   
-    line-height:22px;   
-    font-weight:bold;   
-    text-decoration:none;   
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;	
-}   
-.browse_page a:hover{   
-	border:1px solid #CCCCCC;
-	background-color:#999999;
-    color:#FFFFFF;   
-}   
-.browse_page a.selectPage{   
-    display:block;   
-    width:45px;   
-    font-size:14px;   
-    float:left;   
-    margin-right:2px;   
-	border:1px solid #CCCCCC;
-	background-color:#999999;
+$strSQL = "SELECT * FROM admin_login  WHERE username = '" . mysqli_real_escape_string($condb, $_POST['txtUsername']) . "' and password = '" . mysqli_real_escape_string($condb, $_POST['txtPassword']) . "'";
+$objQuery = mysqli_query($condb, $strSQL);
+$objResult = mysqli_fetch_array($objQuery);
+$_SESSION['name'] = $objResult['name'];
+$_SESSION['id_admin'] = $objResult['id_admin'];
 
-    color:#FFFFFF;   
-    text-align:center;   
-    line-height:22px;    
-    font-weight:bold;   
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;	
-}   
-.browse_page a.SpaceC{   
-    display:block;   
-    width:45px;   
-    font-size:14px;   
-    float:left;   
-    margin-right:2px;   
-    border:0px dotted #0A85CB;   
-    background-color:#FFFFFF;   
-    color:#333333;   
-    text-align:center;   
-    line-height:22px;   
-    font-weight:bold;   
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;	
-}   
-.browse_page a.naviPN{   
-    width:50px;   
-    font-size:12px;   
-    display:block;   
-/*    width:25px;   */
-    float:left;   
-	border:1px solid #CCCCCC;
-	background-color:#999999;
-    color:#FFFFFF;   
-    text-align:center;   
-    line-height:22px;   
-    font-weight:bold;      
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;	
-}  
-/* จบ css แบ่งหน้า */
-.container form table tbody tr td a center {
-	color: #0000FF;
-}
-        </style>
+if (!$objResult) { ?>
+  <!DOCTYPE html>
+  <html lang="en">
 
-        <!-- Bootstrap -->
-        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <link href="bootstrap/css/nava.css" rel="stylesheet">
-        <style type="text/css">
-        body {
-	background-color: #E6E6FA;
-}
-        </style>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ระบบ Slip ออนไลน์</title>
 
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-          <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
 
-    </head>
-    <body>
-        <div class="container">
+    <!-- Bootstrap -->
+    <link href="bootstrap_5/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bootstrap_5/css/style.css" rel="stylesheet">
 
-            <!-- Static navbar -->
-          
-          <p>
-              <!-- Main component for a primary marketing message or call to action --><center>
-                <img src="images/h.png" alt="" width="95%" height="100%">
-          </center></p>
-          <form name="form1" method="post" action="check_login_admin.php">
-            <p><span class="navbar-header"></span></p>
-            <table width="979" >
-              <thead>
-                <tr>
-                  <th colspan="3" ><center contenteditable="text-hide">
-                    <h3 class="text-danger">Username หรือ Password ไม่ถูกต้อง</h3>
-                  </center></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td width="25%">&nbsp;</td>
-                  <td width="19%">&nbsp;</td>
-                  <td width="56%">&nbsp;</td>
-                </tr>
-                <tr>
-                  <td align="right">&nbsp;</td>
-                  <td align="right">Username ::</td>
-                  <td><input class="form-control" maxlength="13" style="width: 150px;" name="txtUsername" type="text" id="txtUsername" required></td>
-                </tr>
-                <tr>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                </tr>
-                <tr>
-                  <td align="right">&nbsp;</td>
-                  <td align="right">Password ::</td>
-                  <td><input class="form-control" style="width: 150px;" name="txtPassword" type="password" id="txtPassword" required></td>
-                </tr>
-                <tr>
-                  <td colspan="3">&nbsp;</td>
-                </tr>
-                <tr>
-                  <td colspan="3"><center>
-                    <input type="submit" name="Submit" value="Login" class="btn btn-primary">
-                  </center></td>
-                </tr>
-              </tbody>
-            </table>
+  </head>
+
+  <body>
+
+    <div class="mt-5 container text-center">
+      <?php include "./components/banner.php" ?>
+      <h3 class="mt-4 text-danger">Username หรือ Password ไม่ถูกต้อง</h3>
+      <div class="row">
+
+        <div class="mt-5 col-md-6 offset-md-3">
+          <form class="mb-3" name="form1" method="post" action="check_login_admin.php">
+            <div class="form-group mb-3">
+              <input class="form-control" maxlength="13" name="txtUsername" type="text" id="txtUsername" required placeholder="ผู้ใช้งาน">
+            </div>
+            <div class="form-group mb-3">
+              <input class="form-control" name="txtPassword" type="password" id="txtPassword" required placeholder="รหัสผ่าน">
+            </div>
+            <div class="form-group">
+              <button type="submit" name="Submit" value="Login" class="btn btn-primary btn-block" role="button">เข้าสู่ระบบ</button>
+            </div>
           </form>
-          <tfoot>
-      <tr>
-  <td height="30"><p>&nbsp;</p>
-    <p><center>
-    </center></p>
-    <p>&nbsp;</p></td>
-  </tr>
-          </tfoot>
-          <center>
-          </center></p>
-        </div> <!-- /container -->
-
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="bootstrap/js/jquery.min.js"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="bootstrap/js/bootstrap.min.js"></script>
-    </body>
-</html>
+        </div>
+      </div>
+    </div>
 
 
-			
-	<?php
-	}
-	else
-	{
-		
+    <?php include "./components/footer.php" ?>
 
-				header("location:data_admin.php");
-			
-			
-	
-	
-	}
-	mysqli_close($condb);
-?>
+  <?php
+} else {
 
+
+  header("location:data_admin.php");
+}
+mysqli_close($condb);
+  ?>

@@ -3,340 +3,151 @@ session_start();
 require 'connect.php'; //เชื่อมฐานข้อมูล
 
 $sess_id = $_SESSION['id_admin'];
-if ($sess_id=="")
-{
-header("location:index.php");
+if ($sess_id == "") {
+	header("location:index.php");
 }
 
-	
-	
+
+
 ?>
 <?php
 // ฟังก์ชั่นสำหรับการแบ่งหน้า NEW MODIFY
-function page_navi($before_p,$plus_p,$total,$total_p,$chk_page){      
-    global $urlquery_str;   
-    $pPrev=$chk_page-1;   
-    $pPrev=($pPrev>=0)?$pPrev:0;   
-    $pNext=$chk_page+1;   
-    $pNext=($pNext>=$total_p)?$total_p-1:$pNext;        
-    $lt_page=$total_p-4;   
-    if($chk_page>0){     
-        echo "<a  href='$urlquery_str"."pages=".intval($pPrev+1)."' class='naviPN'>Prev</a>";   
-    }   
-    if($total_p>=11){   
-        if($chk_page>=4){   
-            echo "<a $nClass href='$urlquery_str"."pages=1'>1</a><a class='SpaceC'>. . .</a>";      
-        }   
-        if($chk_page<4){   
-            for($i=0;$i<$total_p;$i++){     
-                $nClass=($chk_page==$i)?"class='selectPage'":"";   
-                if($i<=4){   
-                echo "<a $nClass href='$urlquery_str"."pages=".intval($i+1)."'>".intval($i+1)."</a> ";      
-                }   
-                if($i==$total_p-1 ){    
-                echo "<a class='SpaceC'>. . .</a><a $nClass href='$urlquery_str"."pages=".intval($i+1)."'>".intval($i+1)."</a> ";      
-                }          
-            }   
-        }   
-        if($chk_page>=4 && $chk_page<$lt_page){   
-            $st_page=$chk_page-3;   
-            for($i=1;$i<=5;$i++){   
-                $nClass=($chk_page==($st_page+$i))?"class='selectPage'":"";   
-                echo "<a $nClass href='$urlquery_str"."pages=".intval($st_page+$i+1)."'>".intval($st_page+$i+1)."</a> ";         
-            }   
-            for($i=0;$i<$total_p;$i++){     
-                if($i==$total_p-1 ){    
-                $nClass=($chk_page==$i)?"class='selectPage'":"";   
-                echo "<a class='SpaceC'>. . .</a><a $nClass href='$urlquery_str"."pages=".intval($i+1)."'>".intval($i+1)."</a> ";      
-                }          
-            }                                      
-        }      
-        if($chk_page>=$lt_page){   
-            for($i=0;$i<=4;$i++){   
-                $nClass=($chk_page==($lt_page+$i-1))?"class='selectPage'":"";   
-                echo "<a $nClass href='$urlquery_str"."pages=".intval($lt_page+$i)."'>".intval($lt_page+$i)."</a> ";      
-            }   
-        }           
-    }else{   
-        for($i=0;$i<$total_p;$i++){     
-            $nClass=($chk_page==$i)?"class='selectPage'":"";   
-            echo "<a href='$urlquery_str"."pages=".intval($i+1)."' $nClass  >".intval($i+1)."</a> ";      
-        }          
-    }      
-    if($chk_page<$total_p-1){   
-        echo "<a href='$urlquery_str"."pages=".intval($pNext+1)."'  class='naviPN'>Next</a>";   
-    }   
+function page_navi($before_p, $plus_p, $total, $total_p, $chk_page)
+{
+	global $urlquery_str;
+	$pPrev = $chk_page - 1;
+	$pPrev = ($pPrev >= 0) ? $pPrev : 0;
+	$pNext = $chk_page + 1;
+	$pNext = ($pNext >= $total_p) ? $total_p - 1 : $pNext;
+	$lt_page = $total_p - 4;
+	if ($chk_page > 0) {
+		echo "<a  href='$urlquery_str" . "pages=" . intval($pPrev + 1) . "' class='naviPN'>Prev</a>";
+	}
+	if ($total_p >= 11) {
+		if ($chk_page >= 4) {
+			echo "<a $nClass href='$urlquery_str" . "pages=1'>1</a><a class='SpaceC'>. . .</a>";
+		}
+		if ($chk_page < 4) {
+			for ($i = 0; $i < $total_p; $i++) {
+				$nClass = ($chk_page == $i) ? "class='selectPage'" : "";
+				if ($i <= 4) {
+					echo "<a $nClass href='$urlquery_str" . "pages=" . intval($i + 1) . "'>" . intval($i + 1) . "</a> ";
+				}
+				if ($i == $total_p - 1) {
+					echo "<a class='SpaceC'>. . .</a><a $nClass href='$urlquery_str" . "pages=" . intval($i + 1) . "'>" . intval($i + 1) . "</a> ";
+				}
+			}
+		}
+		if ($chk_page >= 4 && $chk_page < $lt_page) {
+			$st_page = $chk_page - 3;
+			for ($i = 1; $i <= 5; $i++) {
+				$nClass = ($chk_page == ($st_page + $i)) ? "class='selectPage'" : "";
+				echo "<a $nClass href='$urlquery_str" . "pages=" . intval($st_page + $i + 1) . "'>" . intval($st_page + $i + 1) . "</a> ";
+			}
+			for ($i = 0; $i < $total_p; $i++) {
+				if ($i == $total_p - 1) {
+					$nClass = ($chk_page == $i) ? "class='selectPage'" : "";
+					echo "<a class='SpaceC'>. . .</a><a $nClass href='$urlquery_str" . "pages=" . intval($i + 1) . "'>" . intval($i + 1) . "</a> ";
+				}
+			}
+		}
+		if ($chk_page >= $lt_page) {
+			for ($i = 0; $i <= 4; $i++) {
+				$nClass = ($chk_page == ($lt_page + $i - 1)) ? "class='selectPage'" : "";
+				echo "<a $nClass href='$urlquery_str" . "pages=" . intval($lt_page + $i) . "'>" . intval($lt_page + $i) . "</a> ";
+			}
+		}
+	} else {
+		for ($i = 0; $i < $total_p; $i++) {
+			$nClass = ($chk_page == $i) ? "class='selectPage'" : "";
+			echo "<a href='$urlquery_str" . "pages=" . intval($i + 1) . "' $nClass  >" . intval($i + 1) . "</a> ";
+		}
+	}
+	if ($chk_page < $total_p - 1) {
+		echo "<a href='$urlquery_str" . "pages=" . intval($pNext + 1) . "'  class='naviPN'>Next</a>";
+	}
 }
-?><?php 
- $perpage = 5;
- if (isset($_GET['page'])) {
- $page = $_GET['page'];
- } else {
- $page = 1;
- }
+?><?php
+	$perpage = 5;
+	if (isset($_GET['page'])) {
+		$page = $_GET['page'];
+	} else {
+		$page = 1;
+	}
 
- $start = ($page - 1) * $perpage;
+	$start = ($page - 1) * $perpage;
 
-?>
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>ระบบ Slip ออนไลน์</title>
+	?>
 
-        <!-- Bootstrap -->
-        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <link href="bootstrap/css/nava.css" rel="stylesheet">
-		<link rel="stylesheet" href="css/jquery.datetimepicker.css">
+<?php include "./components/header.php" ?>
 
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-          <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
-<style type="text/css">
-        .ห {	color: #F00;
-}
-#cssmenu{
-    border:none;
-    border:0px;
-    margin:0px;
-    padding:0px;
- /* <!--   font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif; --> */
-    font-size:12px;
-    color:#0000cc;
-    }
-#cssmenu ul{
-    background:#47b6f5;
-    height:42px;
-    list-style:none;
-    margin:0;
-    padding:0;
-    border-top:2px solid #666666;
-    }
-    #cssmenu li{
-        float:left;
-        padding:0px 9px 0px 9px;
-        }
-    #cssmenu li a{
-        color:#666666;
-        display:block;
-        font-weight:bold;
-        line-height:42px;
-        padding:0px 10px;
-        text-align:center;
-        text-decoration:none;
-        }
-        #cssmenu li a:hover{
-            color:#0000FF;
-            text-decoration:none;
-            }
-    #cssmenu li ul{
-        background:#C0C0C0;
-        display:none;
-        position:absolute;
-    
-        } 
-    #cssmenu li:hover ul{
-        display:block;
-        }
-    #cssmenu li li {
-        color:#000;
-        display:block;
-        float:none;
-        padding:0px;
-        width:200px;
-        }  
-    #cssmenu li ul a{
-        display:block;
-        font-size:12px;
-        padding:0px 10px 0px 15px;
-        text-align:left;
-        }
-        #cssmenu li ul a:hover{
-            background:#CCCCCC;
-            color:#000000;
-            opacity:1.0;
-            filter:alpha(opacity=100);
-            }
-    #cssmenu p{
-        clear:left;
-        }  
-    #cssmenu .active > a{
-        background: #CCCCCC;
-        color:#666666;
-        }
-    #cssmenu .active > a:hover {
-        color:#0000cc;
-        }
+<div class="container mt-5">
+<h3 class="mb-3 text-center">
+		<span class="text-center text-success"><strong>อัพโหลดไฟล์เงินเดือน ภายในโรงพยาบาล</strong></span><!-- Main component for a primary marketing message or call to action --><br>
+	</h3>
+</div>
 
-        body {
-	background-color: #E6E6FA;
-}/* css แบ่งหน้า */
-.browse_page{   
-    clear:both;   
-    margin-left:12px;   
-    height:25px;   
-    margin-top:5px;   
-    display:block;   
-}   
-.browse_page a,.browse_page a:hover{   
-    display:block;   
-	width: 2%;
-    font-size:14px;   
-    float:left;   
-    margin:0px 5px;
-    border:1px solid #CCCCCC;   
-    background-color:#F4F4F4;   
-    color:#333333;   
-    text-align:center;   
-    line-height:22px;   
-    font-weight:bold;   
-    text-decoration:none;   
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;	
-}   
-.browse_page a:hover{   
-	border:1px solid #CCCCCC;
-	background-color:#999999;
-    color:#FFFFFF;   
-}   
-.browse_page a.selectPage{   
-    display:block;   
-    width:45px;   
-    font-size:14px;   
-    float:left;   
-    margin-right:2px;   
-	border:1px solid #CCCCCC;
-	background-color:#999999;
 
-    color:#FFFFFF;   
-    text-align:center;   
-    line-height:22px;    
-    font-weight:bold;   
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;	
-}   
-.browse_page a.SpaceC{   
-    display:block;   
-    width:45px;   
-    font-size:14px;   
-    float:left;   
-    margin-right:2px;   
-    border:0px dotted #0A85CB;   
-    background-color:#FFFFFF;   
-    color:#333333;   
-    text-align:center;   
-    line-height:22px;   
-    font-weight:bold;   
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;	
-}   
-.browse_page a.naviPN{   
-    width:50px;   
-    font-size:12px;   
-    display:block;   
-/*    width:25px;   */
-    float:left;   
-	border:1px solid #CCCCCC;
-	background-color:#999999;
-    color:#FFFFFF;   
-    text-align:center;   
-    line-height:22px;   
-    font-weight:bold;      
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;	
-}  
-/* จบ css แบ่งหน้า */
-</style>
-    </head>
-    <body>
-        <div class="container">
-
-            <p>
-              
-          <!-- Static navbar -->      <img src="images/h.png" alt="" width="1140" height="150"></p>
-            <table width="100%" border="0">
-              <tr>
-                    <td width="98"><a href="data_admin.php"><img src="images/i_Home_icon.gif" alt="" width="25" height="25">หน้าหลัก</a>&nbsp;</td>
-					<td width="93"><a href="data_up_admin.php"><img src="images/group_edit.png" alt="" width="25" height="25">อัพไฟล์เงินเดือน</a>&nbsp;</td>
-                    <td width="128"><a href="regis.php"><img src="images/group_edit.png" alt="" width="25" height="25">ลงทะเบียนบุคลากร</a>&nbsp;</td>
-                    <td width="101"><A HREF="logout.php" onclick="return confirm('ยืนยันการออกจากระบบใช่หรือไม่')"><img src="images/lock_go.png" alt="" width="25" height="25">ออกจากระบบ</A>&nbsp;</td>
-                  </tr>
-          </table>
-          <!--/.container-fluid -->
-           
-
-            <!-- Main component for a primary marketing message or call to action -->
-
-            ยินดีต้อนรับ Admin คุณ &nbsp;<strong><?php echo $_SESSION['name'] ?></strong>
-			<br><br>
-			<?php			
-			/*
+<!-- Main  -->
+<?php
+/*
 			$result = mysql_query('select * from payslip limit 10;') ;
 
 			while($record = mysql_fetch_array($result) )
 			{
 			echo "$record[name] is in $record[name]"."<br>";
 			}*/
-	if(isset($_POST['submit'])) {
-	
-	if($_POST['textdate'] != ""){
-		
-		
-	
-	
-     if(isset($_FILES['uploadFile']['name']) && $_FILES['uploadFile']['name'] != "") {
-        $allowedExtensions = array("xls","xlsx");
-        $ext = pathinfo($_FILES['uploadFile']['name'], PATHINFO_EXTENSION);
-		
-        if(in_array($ext, $allowedExtensions)) {
-				
-               $file = "uploads/".$_FILES['uploadFile']['name'];
-               $isUploaded = copy($_FILES['uploadFile']['tmp_name'], $file);
-			  
-               if($isUploaded) {
-					
+if (isset($_POST['submit'])) {
+
+	if ($_POST['textdate'] != "") {
+
+
+
+
+		if (isset($_FILES['uploadFile']['name']) && $_FILES['uploadFile']['name'] != "") {
+			$allowedExtensions = array("xls", "xlsx");
+			$ext = pathinfo($_FILES['uploadFile']['name'], PATHINFO_EXTENSION);
+
+			if (in_array($ext, $allowedExtensions)) {
+
+				$file = "uploads/" . $_FILES['uploadFile']['name'];
+				$isUploaded = copy($_FILES['uploadFile']['tmp_name'], $file);
+
+				if ($isUploaded) {
+
 					require_once __DIR__ . '/vendor/autoload.php';
-                    include(__DIR__ .'/vendor/phpoffice/phpexcel/Classes/PHPExcel/IOFactory.php');
-					
-					
-                    try {
-                       
-                        $objPHPExcel = PHPExcel_IOFactory::load($file);
-                    } catch (Exception $e) {
-                         die('Error loading file "' . pathinfo($file, PATHINFO_BASENAME). '": ' . $e->getMessage());
-                    }
-                    
-                   
-                    $sheet = $objPHPExcel->getSheet(0);
-                    $total_rows = $sheet->getHighestRow();
-					$highestColumn      = $sheet->getHighestColumn();	
-					$highestColumnIndex = PHPExcel_Cell::columnIndexFromString($highestColumn);		
-					
-					
-					for ($row = 2; $row <= $total_rows; ++ $row) {
-						for ($col = 0; $col < $highestColumnIndex; ++ $col) {
+					include(__DIR__ . '/vendor/phpoffice/phpexcel/Classes/PHPExcel/IOFactory.php');
+
+
+					try {
+
+						$objPHPExcel = PHPExcel_IOFactory::load($file);
+					} catch (Exception $e) {
+						die('Error loading file "' . pathinfo($file, PATHINFO_BASENAME) . '": ' . $e->getMessage());
+					}
+
+
+					$sheet = $objPHPExcel->getSheet(0);
+					$total_rows = $sheet->getHighestRow();
+					$highestColumn      = $sheet->getHighestColumn();
+					$highestColumnIndex = PHPExcel_Cell::columnIndexFromString($highestColumn);
+
+
+					for ($row = 2; $row <= $total_rows; ++$row) {
+						for ($col = 0; $col < $highestColumnIndex; ++$col) {
 							$cell = $sheet->getCellByColumnAndRow($col, $row);
 							$val = $cell->getValue();
 							$records[$row][$col] = $val;
 						}
 					}
-					
-					foreach($records as $row){
-						
+
+					foreach ($records as $row) {
+
 						$date_sub = explode("/", $_POST['textdate']);
-						$date = ($date_sub[2]-543)."-".$date_sub[1]."-".$date_sub[0];
-						
-						
-						
+						$date = ($date_sub[2] - 543) . "-" . $date_sub[1] . "-" . $date_sub[0];
+
+
+
 						$no = isset($row[0]) ? $row[0] : '';
 						$title = isset($row[1]) ? $row[1] : '';
 						$name = isset($row[2]) ? $row[2] : '';
@@ -453,10 +264,10 @@ function page_navi($before_p,$plus_p,$total,$total_p,$chk_page){
 						$type97 = isset($row[113]) ? $row[113] : '';
 						$type98 = isset($row[114]) ? $row[114] : '';
 						$type99 = isset($row[115]) ? $row[115] : '';
-						
-						
-						
-						
+
+
+
+
 						$query = "INSERT INTO payslip (date,no,title,name,id,bank_id,office,txtoffice,salary,tax,assur_dd,saving,kid,gpf,pfund,soc,total,type0
 						,type1
 						,type2
@@ -557,211 +368,218 @@ function page_navi($before_p,$plus_p,$total,$total_p,$chk_page){
 						,type97
 						,type98
 						,type99) 
-								values('".$date."','".$no."','".$title."','".$name."','".$id."','".$bank_id."','".$office."','".$txtoffice."','".$salary."','"
-								.$tax."','".$assur_dd."','".$saving."','".$kid."','".$gpf."','".$pfund."','".$soc."','".$total."','".$type0."','"
-								.$type1."','"
-								.$type2."','"
-								.$type3."','"
-								.$type4."','"
-								.$type5."','"
-								.$type6."','"
-								.$type7."','"
-								.$type8."','"
-								.$type9."','"
-								.$type10."','"
-								.$type11."','"
-								.$type12."','"
-								.$type13."','"
-								.$type14."','"
-								.$type15."','"
-								.$type16."','"
-								.$type17."','"
-								.$type18."','"
-								.$type19."','"
-								.$type20."','"
-								.$type21."','"
-								.$type22."','"
-								.$type23."','"
-								.$type24."','"
-								.$type25."','"
-								.$type26."','"
-								.$type27."','"
-								.$type28."','"
-								.$type29."','"
-								.$type30."','"
-								.$type31."','"
-								.$type32."','"
-								.$type33."','"
-								.$type34."','"
-								.$type35."','"
-								.$type36."','"
-								.$type37."','"
-								.$type38."','"
-								.$type39."','"
-								.$type40."','"
-								.$type41."','"
-								.$type42."','"
-								.$type43."','"
-								.$type44."','"
-								.$type45."','"
-								.$type46."','"
-								.$type47."','"
-								.$type48."','"
-								.$type49."','"
-								.$type50."','"
-								.$type51."','"
-								.$type52."','"
-								.$type53."','"
-								.$type54."','"
-								.$type55."','"
-								.$type56."','"
-								.$type57."','"
-								.$type58."','"
-								.$type59."','"
-								.$type60."','"
-								.$type61."','"
-								.$type62."','"
-								.$type63."','"
-								.$type64."','"
-								.$type65."','"
-								.$type66."','"
-								.$type67."','"
-								.$type68."','"
-								.$type69."','"
-								.$type70."','"
-								.$type71."','"
-								.$type72."','"
-								.$type73."','"
-								.$type74."','"
-								.$type75."','"
-								.$type76."','"
-								.$type77."','"
-								.$type78."','"
-								.$type79."','"
-								.$type80."','"
-								.$type81."','"
-								.$type82."','"
-								.$type83."','"
-								.$type84."','"
-								.$type85."','"
-								.$type86."','"
-								.$type87."','"
-								.$type88."','"
-								.$type89."','"
-								.$type90."','"
-								.$type91."','"
-								.$type92."','"
-								.$type93."','"
-								.$type94."','"
-								.$type95."','"
-								.$type96."','"
-								.$type97."','"
-								.$type98."','"
-								.$type99."')";
-								
-								
+								values('" . $date . "','" . $no . "','" . $title . "','" . $name . "','" . $id . "','" . $bank_id . "','" . $office . "','" . $txtoffice . "','" . $salary . "','"
+							. $tax . "','" . $assur_dd . "','" . $saving . "','" . $kid . "','" . $gpf . "','" . $pfund . "','" . $soc . "','" . $total . "','" . $type0 . "','"
+							. $type1 . "','"
+							. $type2 . "','"
+							. $type3 . "','"
+							. $type4 . "','"
+							. $type5 . "','"
+							. $type6 . "','"
+							. $type7 . "','"
+							. $type8 . "','"
+							. $type9 . "','"
+							. $type10 . "','"
+							. $type11 . "','"
+							. $type12 . "','"
+							. $type13 . "','"
+							. $type14 . "','"
+							. $type15 . "','"
+							. $type16 . "','"
+							. $type17 . "','"
+							. $type18 . "','"
+							. $type19 . "','"
+							. $type20 . "','"
+							. $type21 . "','"
+							. $type22 . "','"
+							. $type23 . "','"
+							. $type24 . "','"
+							. $type25 . "','"
+							. $type26 . "','"
+							. $type27 . "','"
+							. $type28 . "','"
+							. $type29 . "','"
+							. $type30 . "','"
+							. $type31 . "','"
+							. $type32 . "','"
+							. $type33 . "','"
+							. $type34 . "','"
+							. $type35 . "','"
+							. $type36 . "','"
+							. $type37 . "','"
+							. $type38 . "','"
+							. $type39 . "','"
+							. $type40 . "','"
+							. $type41 . "','"
+							. $type42 . "','"
+							. $type43 . "','"
+							. $type44 . "','"
+							. $type45 . "','"
+							. $type46 . "','"
+							. $type47 . "','"
+							. $type48 . "','"
+							. $type49 . "','"
+							. $type50 . "','"
+							. $type51 . "','"
+							. $type52 . "','"
+							. $type53 . "','"
+							. $type54 . "','"
+							. $type55 . "','"
+							. $type56 . "','"
+							. $type57 . "','"
+							. $type58 . "','"
+							. $type59 . "','"
+							. $type60 . "','"
+							. $type61 . "','"
+							. $type62 . "','"
+							. $type63 . "','"
+							. $type64 . "','"
+							. $type65 . "','"
+							. $type66 . "','"
+							. $type67 . "','"
+							. $type68 . "','"
+							. $type69 . "','"
+							. $type70 . "','"
+							. $type71 . "','"
+							. $type72 . "','"
+							. $type73 . "','"
+							. $type74 . "','"
+							. $type75 . "','"
+							. $type76 . "','"
+							. $type77 . "','"
+							. $type78 . "','"
+							. $type79 . "','"
+							. $type80 . "','"
+							. $type81 . "','"
+							. $type82 . "','"
+							. $type83 . "','"
+							. $type84 . "','"
+							. $type85 . "','"
+							. $type86 . "','"
+							. $type87 . "','"
+							. $type88 . "','"
+							. $type89 . "','"
+							. $type90 . "','"
+							. $type91 . "','"
+							. $type92 . "','"
+							. $type93 . "','"
+							. $type94 . "','"
+							. $type95 . "','"
+							. $type96 . "','"
+							. $type97 . "','"
+							. $type98 . "','"
+							. $type99 . "')";
+
+
 						//$mysqli->query($query);
-						mysqli_query($condb,$query);						
+						mysqli_query($condb, $query);
 					}
+
+
+
+					echo '<div class="col-md-12 container ">
+				<div class=" alert alert-success alert-dismissible fade show" role="alert">
+					<strong>ข้อมูลแทรกในฐานข้อมูลสำเร็จ!</strong>
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	  			</div>
+			</div>';
 					
+
+					unlink($file);
+				} else {
+					echo '<div class="col-md-12 container ">
+				<div class=" alert alert-danger alert-dismissible fade show" role="alert">
+					<strong>ไม่ได้อัปโหลดไฟล์!</strong>
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	  			</div>
+			</div>';
+
 					
-					
-					echo '<br><h3><span class="label label-success">ข้อมูลแทรกในฐานข้อมูลสำเร็จ!</span></h3>';
+				}
+			} else {
+				echo '<div class="col-md-12 container ">
+				<div class=" alert alert-danger alert-dismissible fade show" role="alert">
+					<strong>โปรดอัปโหลดแผ่นงาน excel</strong>
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	  			</div>
+			</div>';
+
 				
-                    unlink($file);
-                } else {
-                    
-					echo '<h3><span class="label label-danger">ไม่ได้อัปโหลดไฟล์!</span></h3>';
-                }
-        } else {
-          
-			echo '<h3><span class="label label-danger">โปรดอัปโหลดแผ่นงาน excel</span></h3>';
-        }
-    } else {
-       
-		echo '<h3><span class="label label-danger">โปรดอัปโหลดไฟล์ excel</span></h3>';
-    }
-	}else{
-		
-		echo '<h3><span class="label label-danger">โปรดกรอกวันที่</span></h3>';
+			}
+		} else {
+			echo '<div class="col-md-12 container ">
+				<div class=" alert alert-danger alert-dismissible fade show" role="alert">
+					<strong>โปรดอัปโหลดไฟล์ excel </strong>
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	  			</div>
+			</div>';
+
+			
+		}
+	} else {
+
+		echo '<div class="col-md-12 container ">
+				<div class=" alert alert-danger alert-dismissible fade show" role="alert">
+					<strong>โปรดกรอกวันที่ </strong>
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	  			</div>
+			</div>';
 	}
 }
-			?>
-<br><br><br>
-		<center>
-			<form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" enctype="multipart/form-data">
-				<div class="form-group">
-					<label>วันที่</label>
-					 <input type="text" name="textdate" id="testdate5" value="" style="width:100px;" require>    
-				</div>
-				<div class="form-group">
-					<label>เลือกอัพไฟล์เงินเดือน .xls, .xlsx</label>
-					<input type="file" name="uploadFile" class="form-control"   />
-				</div>
-				<div class="form-group">
-					<button type="submit" name="submit" class="btn btn-success">อัพไฟล์เงินเดือน</button>
-				</div>
-		</form>
-		 </center>   
- 
+?>
 
-        </div> <!-- /container -->
+<div class="container mt-5">
 
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="bootstrap/js/jquery.min.js"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="bootstrap/js/bootstrap.min.js"></script>
-		<script src="js/jquery.min.js"></script>  
-<script src="js/jquery.datetimepicker.full.js"></script>
-<script type="text/javascript">   
-$(function(){
-	
-	$.datetimepicker.setLocale('th'); // ต้องกำหนดเสมอถ้าใช้ภาษาไทย และ เป็นปี พ.ศ.
-	
-	// กรณีใช้แบบ inline
-    $("#testdate4").datetimepicker({
-        timepicker:false,
-        format:'d/m/Y',  // กำหนดรูปแบบวันที่ ที่ใช้ เป็น 00-00-0000			
-        lang:'th',  // ต้องกำหนดเสมอถ้าใช้ภาษาไทย และ เป็นปี พ.ศ.
-		inline:true  
-    });       
-	
-	
-	// กรณีใช้แบบ input
-    $("#testdate5").datetimepicker({
-        timepicker:false,
-        format:'d/m/Y',  // กำหนดรูปแบบวันที่ ที่ใช้ เป็น 00-00-0000			
-        lang:'th',  // ต้องกำหนดเสมอถ้าใช้ภาษาไทย และ เป็นปี พ.ศ.
-		onSelectDate:function(dp,$input){
-			var yearT=new Date(dp).getFullYear()-0;  
-			var yearTH=yearT+543;
-			var fulldate=$input.val();
-			var fulldateTH=fulldate.replace(yearT,yearTH);
-			$input.val(fulldateTH);
-		},
-    });       
-	// กรณีใช้กับ input ต้องกำหนดส่วนนี้ด้วยเสมอ เพื่อปรับปีให้เป็น ค.ศ. ก่อนแสดงปฏิทิน
-	$("#testdate5").on("mouseenter mouseleave",function(e){
-		var dateValue=$(this).val();
-		if(dateValue!=""){
-				var arr_date=dateValue.split("-"); // ถ้าใช้ตัวแบ่งรูปแบบอื่น ให้เปลี่ยนเป็นตามรูปแบบนั้น
-				// ในที่นี้อยู่ในรูปแบบ 00-00-0000 เป็น d/m/Y  แบ่งด่วย - ดังนั้น ตัวแปรที่เป็นปี จะอยู่ใน array
-				//  ตัวที่สอง arr_date[2] โดยเริ่มนับจาก 0 
-				if(e.type=="mouseenter"){
-					var yearT=arr_date[2]-543;
-				}		
-				if(e.type=="mouseleave"){
-					var yearT=parseInt(arr_date[2])+543;
-				}	
-				dateValue=dateValue.replace(arr_date[2],yearT);
-				$(this).val(dateValue);													
-		}		
-	});
-    
-    
-});
-</script>
-    </body>
-</html>
+	<form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" enctype="multipart/form-data">
+		<div class="row ">
+			<div class="col-md-6">
+				<div class="text-center row mb-3">
+					<label for="inputPassword" class="col-sm-2 col-form-label">กรอกวันที่ :</label>
+					<div class="col-sm-10">
+						<input type="date" name="textdate" id="testdate5" value="" class="form-control" require>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="">
+					<div class="text-center mb-3">
+						<div class="row">
+							<div class="col-md-5">
+								<label for="formFile" class="form-label">เลือกอัพไฟล์เงินเดือน .xls, .xlsx :</label>
+							</div>
+							<div class="col-md-7">
+								<input class="form-control" type="file" name="uploadFile" id="formFile">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="text-center mt-4 mb-4 col-md-12 form-group">
+			<button type="submit" name="submit" class="btn btn-success">อัพไฟล์เงินเดือน</button>
+		</div>
+	</form>
+</div>
+
+<!-- <center>
+	<form method="POST" action="<//?php // echo $_SERVER['PHP_SELF']; ?>" enctype="multipart/form-data">
+		<div class="form-group">
+			<label>วันที่</label>
+			<input type="text" name="textdate" id="testdate5" value="" style="width:100px;" require>
+		</div>
+		<div class="form-group">
+			<label>เลือกอัพไฟล์เงินเดือน .xls, .xlsx</label>
+			<input type="file" name="uploadFile" class="form-control" />
+		</div>
+		<div class="form-group">
+			<button type="submit" name="submit" class="btn btn-success">อัพไฟล์เงินเดือน</button>
+		</div>
+	</form>
+</center> -->
+
+
+
+
+<?php include "./components/footer.php"?>
 <?php
 mysqli_close($condb);
