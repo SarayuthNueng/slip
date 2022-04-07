@@ -30,7 +30,7 @@ $sess_id = $itemId;
         </div>
         <div class="col-4 form-group mb-3">
           <label>เลขที่บัตรประชาชน</label>
-          <input class="form-control" type="text" class="form-control" value="<?= $row_show['id'] ?>" name="id" id="id" readonly placeholder="เลขที่บัตรประชาชน">
+          <input class="form-control" type="text" class="form-control" value="<?= $row_show['cid'] ?>" name="cid" id="cid" readonly placeholder="เลขที่บัตรประชาชน">
         </div>
         <div class="col-4 form-group mb-3">
           <label>ชื่อ - สกุล</label>
@@ -40,45 +40,45 @@ $sess_id = $itemId;
       <div class="row">
         <div class="col-4 form-group mb-3">
           <label>เงินเดือน</label>
-          <input class="form-control" type="text" class="form-control" value="" name="Code_Student" id="Code_Student" required placeholder="เงินเดือน">
+          <input class="form-control" type="text" class="form-control" value="" name="sarary" id="sarary" required placeholder="เงินเดือน">
         </div>
         <div class="col-4 form-group mb-3">
           <label>ประกันสังคม 5%</label>
-          <input class="form-control" value="" name="Pass_Student" id="Pass_Student" required placeholder="ประกันสังคม 5%">
+          <input class="form-control" value="" name="social" id="social" required placeholder="ประกันสังคม 5%">
         </div>
         <div class="col-4 form-group mb-3">
           <label>พกส.</label>
-          <input class="form-control" value="" name="pos" id="pos" required placeholder="พกส.">
+          <input class="form-control" value="" name="pks" id="pks" required placeholder="พกส.">
         </div>
         
       </div>
       <div class="row">
         <div class="col-4 form-group mb-3">
           <label>กรอ. , กยศ.</label>
-          <input class="form-control" type="text" class="form-control" value="" name="Code_Student" id="Code_Student" required placeholder="กรอ. , กยศ.">
+          <input class="form-control" type="text" class="form-control" value="" name="borrow" id="borrow" required placeholder="กรอ. , กยศ.">
         </div>
         <div class="col-4 form-group mb-3">
           <label>ขยะ</label>
-          <input class="form-control" value="" name="Pass_Student" id="Pass_Student" required placeholder="ขยะ">
+          <input class="form-control" value="" name="bin" id="bin" required placeholder="ขยะ">
         </div>
         <div class="col-4 form-group mb-3">
           <label>สะอาด</label>
-          <input class="form-control" value="" name="pos" id="pos" required placeholder="สะอาด">
+          <input class="form-control" value="" name="clean" id="clean" required placeholder="สะอาด">
         </div>
         
       </div>
       <div class="row">
         <div class="col-4 form-group mb-3">
           <label>สหกรณ์ออมทรัพย์</label>
-          <input class="form-control" type="text" class="form-control" value="" name="Code_Student" id="Code_Student" required placeholder="สหกรณ์ออมทรัพย์">
+          <input class="form-control" type="text" class="form-control" value="" name="cooperative" id="cooperative" required placeholder="สหกรณ์ออมทรัพย์">
         </div>
         <div class="col-4 form-group mb-3">
           <label>คงเหลือ</label>
-          <input class="form-control" value="" name="Pass_Student" id="Pass_Student" required placeholder="คงเหลือ">
+          <input class="form-control" value="" name="balance" id="balance" required placeholder="คงเหลือ">
         </div>
         <div class="col-4 form-group mb-3">
           <label>หมายเหตุ</label>
-          <input class="form-control" value="" name="pos" id="pos" required placeholder="หมายเหตุ">
+          <input class="form-control" value="" name="remark" id="remark" required placeholder="หมายเหตุ">
         </div>
         
       </div>

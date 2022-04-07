@@ -2,6 +2,7 @@
 require 'connect.php'; //เชื่อมฐานข้อมูล
 session_start();
 $itemId = isset($_GET['itemId']) ? $_GET['itemId'] : "";
+echo print_r($itemId);
 $sess_id = $_SESSION['id_admin'];
 if ($sess_id == "") {
     header("location:index.php");
@@ -114,7 +115,10 @@ function page_navi($before_p, $plus_p, $total, $total_p, $chk_page)
 
                                     $id = $itemId;
                                     $q = "SELECT * from payslip s  WHERE s.id = '" . $id . "' order by date DESC ";
+                                    // $q = "SELECT * from payslip";
                                     $qr = @mysqli_query($condb, $q);
+
+                                    echo print_r($qr);
 
                                     $total = @mysqli_num_rows($qr);
                                     ?> <?php
@@ -142,9 +146,12 @@ function page_navi($before_p, $plus_p, $total, $total_p, $chk_page)
                                         /// END PAGE NAVI ZONE	
 
                                         while ($rs = @mysqli_fetch_array($qr)) { ?>
+
+                                    
+                                        
                                         <tr>
                                             <td><a class="table-bt" href="edit_price_user.php?itemId=<?= $rs['id_num']; ?>" role="button"><?php echo $rs['id_num']; ?></a></td>
-                                            <td><?php echo $rs['date']; ?></td>
+                                            <td><?php echo $rs['id']; ?></td>
                                             <td><?php echo $rs['no']; ?></td>
                                             <td><?php echo $rs['title']; ?></td>
                                             <td><?php echo $rs['name']; ?></td>
