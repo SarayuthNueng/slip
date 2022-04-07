@@ -24,97 +24,66 @@ $sess_id = $itemId;
   <div class=" mt-4 col-md-12 ">
     <form class="mb-3" name="form1" method="post" action="check_edit_price_user.php">
       <div class="row">
-        <div class="col-6 form-group mb-3">
+        <div class="col-4 form-group mb-3">
           <label>เลขที่</label>
           <input class="form-control" type="text" class="form-control" value="<?= $id ?>" name="id_num" id="id_num" readonly placeholder="เลขที่">
         </div>
-        <div class="col-6 form-group mb-3">
+        <div class="col-4 form-group mb-3">
+          <label>เลขที่บัตรประชาชน</label>
+          <input class="form-control" type="text" class="form-control" value="<?= $row_show['id'] ?>" name="id" id="id" readonly placeholder="เลขที่บัตรประชาชน">
+        </div>
+        <div class="col-4 form-group mb-3">
           <label>ชื่อ - สกุล</label>
           <input class="form-control" type="text" class="form-control" value="<?= $row_show['name'] ?>" name="name" id="name" readonly placeholder="ชื่อ - สกุล">
         </div>
       </div>
       <div class="row">
-        <div class="col-2 form-group mb-3">
+        <div class="col-4 form-group mb-3">
           <label>เงินเดือน</label>
           <input class="form-control" type="text" class="form-control" value="" name="Code_Student" id="Code_Student" required placeholder="เงินเดือน">
         </div>
-        <div class="col-2 form-group mb-3">
-          <label>เลขที่</label>
-          <input class="form-control" value="" name="Pass_Student" id="Pass_Student" required placeholder="รหัสผ่าน">
+        <div class="col-4 form-group mb-3">
+          <label>ประกันสังคม 5%</label>
+          <input class="form-control" value="" name="Pass_Student" id="Pass_Student" required placeholder="ประกันสังคม 5%">
         </div>
-        <div class="col-2 form-group mb-3">
-          <label>เลขที่</label>
-          <input class="form-control" value="" name="pos" id="pos" required placeholder="หน่วยงาน">
+        <div class="col-4 form-group mb-3">
+          <label>พกส.</label>
+          <input class="form-control" value="" name="pos" id="pos" required placeholder="พกส.">
         </div>
-        <div class="col-2 form-group mb-3">
-          <label>เงินเดือน</label>
-          <input class="form-control" type="text" class="form-control" value="" name="Code_Student" id="Code_Student" required placeholder="เงินเดือน">
-        </div>
-        <div class="col-2 form-group mb-3">
-          <label>เลขที่</label>
-          <input class="form-control" value="" name="Pass_Student" id="Pass_Student" required placeholder="รหัสผ่าน">
-        </div>
-        <div class="col-2 form-group mb-3">
-          <label>เลขที่</label>
-          <input class="form-control" value="" name="pos" id="pos" required placeholder="หน่วยงาน">
-        </div>
+        
       </div>
       <div class="row">
-        <div class="col-2 form-group mb-3">
-          <label>เงินเดือน</label>
-          <input class="form-control" type="text" class="form-control" value="" name="Code_Student" id="Code_Student" required placeholder="เงินเดือน">
+        <div class="col-4 form-group mb-3">
+          <label>กรอ. , กยศ.</label>
+          <input class="form-control" type="text" class="form-control" value="" name="Code_Student" id="Code_Student" required placeholder="กรอ. , กยศ.">
         </div>
-        <div class="col-2 form-group mb-3">
-          <label>เลขที่</label>
-          <input class="form-control" value="" name="Pass_Student" id="Pass_Student" required placeholder="รหัสผ่าน">
+        <div class="col-4 form-group mb-3">
+          <label>ขยะ</label>
+          <input class="form-control" value="" name="Pass_Student" id="Pass_Student" required placeholder="ขยะ">
         </div>
-        <div class="col-2 form-group mb-3">
-          <label>เลขที่</label>
-          <input class="form-control" value="" name="pos" id="pos" required placeholder="หน่วยงาน">
+        <div class="col-4 form-group mb-3">
+          <label>สะอาด</label>
+          <input class="form-control" value="" name="pos" id="pos" required placeholder="สะอาด">
         </div>
-        <div class="col-2 form-group mb-3">
-          <label>เงินเดือน</label>
-          <input class="form-control" type="text" class="form-control" value="" name="Code_Student" id="Code_Student" required placeholder="เงินเดือน">
-        </div>
-        <div class="col-2 form-group mb-3">
-          <label>เลขที่</label>
-          <input class="form-control" value="" name="Pass_Student" id="Pass_Student" required placeholder="รหัสผ่าน">
-        </div>
-        <div class="col-2 form-group mb-3">
-          <label>เลขที่</label>
-          <input class="form-control" value="" name="pos" id="pos" required placeholder="หน่วยงาน">
-        </div>
+        
       </div>
       <div class="row">
-        <div class="col-2 form-group mb-3">
-          <label>เงินเดือน</label>
-          <input class="form-control" type="text" class="form-control" value="" name="Code_Student" id="Code_Student" required placeholder="เงินเดือน">
+        <div class="col-4 form-group mb-3">
+          <label>สหกรณ์ออมทรัพย์</label>
+          <input class="form-control" type="text" class="form-control" value="" name="Code_Student" id="Code_Student" required placeholder="สหกรณ์ออมทรัพย์">
         </div>
-        <div class="col-2 form-group mb-3">
-          <label>เลขที่</label>
-          <input class="form-control" value="" name="Pass_Student" id="Pass_Student" required placeholder="รหัสผ่าน">
+        <div class="col-4 form-group mb-3">
+          <label>คงเหลือ</label>
+          <input class="form-control" value="" name="Pass_Student" id="Pass_Student" required placeholder="คงเหลือ">
         </div>
-        <div class="col-2 form-group mb-3">
-          <label>เลขที่</label>
-          <input class="form-control" value="" name="pos" id="pos" required placeholder="หน่วยงาน">
+        <div class="col-4 form-group mb-3">
+          <label>หมายเหตุ</label>
+          <input class="form-control" value="" name="pos" id="pos" required placeholder="หมายเหตุ">
         </div>
-        <div class="col-2 form-group mb-3">
-          <label>เงินเดือน</label>
-          <input class="form-control" type="text" class="form-control" value="" name="Code_Student" id="Code_Student" required placeholder="เงินเดือน">
-        </div>
-        <div class="col-2 form-group mb-3">
-          <label>เลขที่</label>
-          <input class="form-control" value="" name="Pass_Student" id="Pass_Student" required placeholder="รหัสผ่าน">
-        </div>
-        <div class="col-2 form-group mb-3">
-          <label>เลขที่</label>
-          <input class="form-control" value="" name="pos" id="pos" required placeholder="หน่วยงาน">
-        </div>
+        
       </div>
 
-
-
-      <div class="text-center form-group justify-content-between">
+      <div class="mt-4 text-center form-group justify-content-between">
         <a href="data_user.php" type="button" name="Submit" value="Login" class="btn btn-danger btn-block" role="button">ย้อนกลับ</a>
         <button type="submit" name="btn2" id="btn2" class="btn btn-primary btn-block" role="button">ตกลง</button>
       </div>
@@ -126,7 +95,7 @@ $sess_id = $itemId;
 
 <?php include "./components/footer.php" ?>
 
-<form name="form1" method="post" action="check_edit_price_user.php">
+<!-- <form name="form1" method="post" action="check_edit_price_user.php">
   <table width="805" border="0">
     <tr>
       <td width="198" align="left"></td>
@@ -1484,18 +1453,8 @@ $sess_id = $itemId;
   <center>
     <h4>&nbsp;</h4>
   </center>
-</p>
+</p> -->
 
 <!-- Main component for a primary marketing message or call to action -->
 
 
-</div>
-<!-- /container -->
-
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="bootstrap/js/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="bootstrap/js/bootstrap.min.js"></script>
-</body>
-
-</html>
