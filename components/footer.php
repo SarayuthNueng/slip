@@ -1,4 +1,4 @@
-<footer class=" mb-5 my-4 footer ">
+<footer class="mt-4 mb-5 my-4 footer ">
     <ul class="nav justify-content-center border-bottom pb-3 ">
     </ul>
     <p class="mt-4 text-center text-muted" style="font-weight: bold; font-size: 12px;">2022 &copy; งานเทคโนโลยีสารสนเทศ - โรงพยาบาลสมเด็จ

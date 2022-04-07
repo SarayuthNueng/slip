@@ -57,64 +57,64 @@ if ($sess_id == "") {
 <?php include "./components/header_user.php" ?>
 
 <div class="container mt-5">
-  <h3 class="mb-3 text-center">
-    <span class="text-center text-success"><strong>รายการแจ้งยอดเงิน รายเดือน</strong></span><!-- Main component for a primary marketing message or call to action --><br>
-  </h3>
+    <h3 class="mb-3 text-center">
+        <span class="text-center text-success"><strong>รายการแจ้งยอดเงิน รายเดือน</strong></span><!-- Main component for a primary marketing message or call to action --><br>
+    </h3>
 
-		<div class="text-center mt-4 content container-fluid">
-			<div class="row">
-				<div class="col-sm-12">
-					<div class="card">
-						<div class="card-body">
-							<div class="table-responsive">
-								<table class="datatable table table-stripped">
-									<thead>
-										<tr>
-											<th>กรุณาเลือกเพื่อดูรายละเอียด</th>
-											<th>รับรวม</th>
-											<th>หักรวม</th>
-											<th>คงเหลือ</th>
-										</tr>
-                                        <?php $strSQL = "SELECT * FROM  payslip WHERE id = '" . $_SESSION['id_login'] . "' ORDER BY date DESC ";
-                $objQuery = mysqli_query($condb, $strSQL);
+    <div class="text-center mt-4 content container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="datatable table table-stripped">
+                                <thead>
+                                    <tr>
+                                        <th>กรุณาเลือกเพื่อดูรายละเอียด</th>
+                                        <th>รับรวม</th>
+                                        <th>หักรวม</th>
+                                        <th>คงเหลือ</th>
+                                    </tr>
+                                    <?php $strSQL = "SELECT * FROM  payslip WHERE id = '" . $_SESSION['id_login'] . "' ORDER BY date DESC ";
+                                    $objQuery = mysqli_query($condb, $strSQL);
 
-                ?>
-                <?php while ($objResult = mysqli_fetch_assoc($objQuery)) { ?>
-                    <tr>
-                        <td>
-                            <h4><a href="slip.php?id_date=<?= $objResult['date']; ?>" role="button"><?php
+                                    ?>
+                                    <?php while ($objResult = mysqli_fetch_assoc($objQuery)) { ?>
+                                        <tr>
+                                            <td>
+                                                <h4><a class="table-bt" href="slip.php?id_date=<?= $objResult['date']; ?>" role="button"><?php
 
 
-                                                                                                    $eng_date = strtotime($objResult['date']);
-                                                                                                //    echo thai_date($eng_date); 
-                                                                                                echo thaidate('j F พ.ศ. Y',$eng_date);?></a></h4>
-                        </td>
-                        <td><?php $rub = $objResult['salary'] + $objResult['type11'] + $objResult['type12'] + $objResult['type13']
-                                                + $objResult['type14'] + $objResult['type15'] + $objResult['type16'] + $objResult['type17'] + $objResult['type18'] + $objResult['type19'] + $objResult['type20'] + $objResult['type21'] + $objResult['type22'] + $objResult['type23'] + $objResult['type24'] + $objResult['type25'] + $objResult['type26'] + $objResult['type27'] + $objResult['type28'] + $objResult['type29'] + $objResult['type30'] + $objResult['type31'] + $objResult['type32'] + $objResult['type33'] + $objResult['type34'] + $objResult['type35'] + $objResult['type36'] + $objResult['type37'];
-                                            echo number_format($rub, 0); ?>
-                        </td>
-                        <td><?php $jray = $objResult['tax'] + $objResult['assur_dd'] + $objResult['saving'] + $objResult['kid']
-                                                + $objResult['gpf'] + $objResult['pfund'] + $objResult['soc'] + $objResult['type51'] + $objResult['type52'] + $objResult['type53'] + $objResult['type54'] + $objResult['type55'] + $objResult['type56'] + $objResult['type57'] + $objResult['type58'] + $objResult['type59'] + $objResult['type60'] + $objResult['type61'] + $objResult['type62'] + $objResult['type63'] + $objResult['type64'] + $objResult['type65'] + $objResult['type66'] + $objResult['type67'] + $objResult['type68'] + $objResult['type69'] + $objResult['type70'] + $objResult['type71'] + $objResult['type72'];
-                                            echo number_format($jray, 0); ?>
-                        </td>
-                        <td><?php echo number_format($rub - $jray, 0); ?>
-                        </td>
+                                                    $eng_date = strtotime($objResult['date']);
+                                                    //    echo thai_date($eng_date); 
+                                                    echo thaidate('j F พ.ศ. Y', $eng_date); ?></a></h4>
+                                            </td>
+                                            <td><?php $rub = $objResult['salary'] + $objResult['type11'] + $objResult['type12'] + $objResult['type13']
+                                                    + $objResult['type14'] + $objResult['type15'] + $objResult['type16'] + $objResult['type17'] + $objResult['type18'] + $objResult['type19'] + $objResult['type20'] + $objResult['type21'] + $objResult['type22'] + $objResult['type23'] + $objResult['type24'] + $objResult['type25'] + $objResult['type26'] + $objResult['type27'] + $objResult['type28'] + $objResult['type29'] + $objResult['type30'] + $objResult['type31'] + $objResult['type32'] + $objResult['type33'] + $objResult['type34'] + $objResult['type35'] + $objResult['type36'] + $objResult['type37'];
+                                                echo number_format($rub, 0); ?>
+                                            </td>
+                                            <td><?php $jray = $objResult['tax'] + $objResult['assur_dd'] + $objResult['saving'] + $objResult['kid']
+                                                    + $objResult['gpf'] + $objResult['pfund'] + $objResult['soc'] + $objResult['type51'] + $objResult['type52'] + $objResult['type53'] + $objResult['type54'] + $objResult['type55'] + $objResult['type56'] + $objResult['type57'] + $objResult['type58'] + $objResult['type59'] + $objResult['type60'] + $objResult['type61'] + $objResult['type62'] + $objResult['type63'] + $objResult['type64'] + $objResult['type65'] + $objResult['type66'] + $objResult['type67'] + $objResult['type68'] + $objResult['type69'] + $objResult['type70'] + $objResult['type71'] + $objResult['type72'];
+                                                echo number_format($jray, 0); ?>
+                                            </td>
+                                            <td><?php echo number_format($rub - $jray, 0); ?>
+                                            </td>
 
-                    </tr><?php } ?>
-								</table>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	
+                                        </tr><?php } ?>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 </div>
 
 <?php include "./components/footer.php" ?>
 
 
-            
+
 <?php
 mysqli_close($condb);

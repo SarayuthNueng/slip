@@ -18,7 +18,7 @@ $objResult = mysqli_fetch_array($objQuery);
 
 <?php include "./components/header_user.php" ?>
 
-<div class="mt-4 container">
+<div class="mb-5 mt-4 container">
 	<div class="mt-4 col-md-12">
 		<a type="button" class="table-bt fa-solid fa-print ml-2 fa-2x" onclick="printDiv('divprint')" role="button" style="color:black;"></a>
 		<!-- Main component for a primary marketing message or call to action -->
@@ -44,7 +44,7 @@ $objResult = mysqli_fetch_array($objQuery);
 						</tr>
 						<tr>
 							<td colspan="6" align="center">
-								<p class="a">389 หมู่ 2 ต.สมเด็จ อ.สมเด็จ จ.กาฬสินธุ์ 46150 โทร 043861140 งานการเงินต่อ 311 </p>
+								<p class="a mt-3">389 หมู่ 2 ต.สมเด็จ อ.สมเด็จ จ.กาฬสินธุ์ 46150 โทร 043861140 งานการเงินต่อ 311 </p>
 							</td>
 							<td>&nbsp;</td>
 						</tr>
@@ -83,7 +83,7 @@ $objResult = mysqli_fetch_array($objQuery);
 			</center>
 
 
-			<div class="mt-4 text-center content container-fluid">
+			<div class=" mt-4 text-center content container-fluid">
 				<div class="row">
 					<div class="col-sm-12">
 						<div class="card">
@@ -600,7 +600,7 @@ $objResult = mysqli_fetch_array($objQuery);
 			</div>
 
 			<center>
-				<table>
+				<table class="mb-5">
 					<tr>
 						<td height="22">&nbsp;</td>
 						<td align="center">&nbsp;</td>
@@ -637,23 +637,30 @@ $objResult = mysqli_fetch_array($objQuery);
 			</center>
 		</div>
 	</div>
-	<br>
+</div>
 
-	<script type="text/javascript">
-		function printDiv(divName) {
-			var printContents = document.getElementById(divName).innerHTML;
-			var originalContents = document.body.innerHTML;
-
-			document.body.innerHTML = printContents;
-			window.print();
-
-			document.body.innerHTML = originalContents;
-
-
-		}
-	</script>
+<?php // include "./components/footer.php" ?>
 
 
 
-	<?php
-	mysqli_close($condb);
+
+<script type="text/javascript">
+	function printDiv(divName) {
+		var printContents = document.getElementById(divName).innerHTML;
+		var originalContents = document.body.innerHTML;
+
+		document.body.innerHTML = printContents;
+		window.print();
+
+		document.body.innerHTML = originalContents;
+
+
+	}
+</script>
+
+
+
+
+
+<?php
+mysqli_close($condb);
