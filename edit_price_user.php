@@ -5,7 +5,7 @@ $itemId = isset($_GET['itemId']) ? $_GET['itemId'] : "";
 
 
 $id = $itemId;
-$sql_show = "SELECT * from payslip s  WHERE s.id_num = '" . $id . "'";
+$sql_show = "SELECT * from payslip   WHERE cid = '" . $id . "'";
 $result_show = mysqli_query($condb, $sql_show) or die(mysqli_error($condb));
 $row_show = mysqli_fetch_array($result_show);
 
@@ -26,7 +26,7 @@ $sess_id = $itemId;
       <div class="row">
         <div class="col-4 form-group mb-3">
           <label>เลขที่</label>
-          <input class="form-control" type="text" class="form-control" value="<?= $id ?>" name="id_num" id="id_num" readonly placeholder="เลขที่">
+          <input class="form-control" type="text" class="form-control" value="<?= $row_show['id_num'] ?>" name="id_num" id="id_num" readonly placeholder="เลขที่">
         </div>
         <div class="col-4 form-group mb-3">
           <label>เลขที่บัตรประชาชน</label>
