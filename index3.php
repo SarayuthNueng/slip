@@ -75,8 +75,9 @@ if ($sess_id == "") {
                                         <th>หักรวม</th>
                                         <th>คงเหลือ</th>
                                     </tr>
-                                    <?php $strSQL = "SELECT * FROM  payslip WHERE id = '" . $_SESSION['id_login'] . "' ORDER BY date DESC ";
+                                    <?php $strSQL = "SELECT * FROM  payslip WHERE id = '" . $_SESSION['id_login'] . "'  ";
                                     $objQuery = mysqli_query($condb, $strSQL);
+                                    echo print_r($strSQL);
 
                                     ?>
                                     <?php while ($objResult = mysqli_fetch_assoc($objQuery)) { ?>

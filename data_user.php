@@ -113,7 +113,10 @@ function page_navi($before_p, $plus_p, $total, $total_p, $chk_page)
                                     <?php
 
                                     $id = $itemId;
-                                    $q = "SELECT * from payslip   WHERE cid = '" . $id . "' order by date DESC ";
+                                    $q = "SELECT *  
+                                    from payslip p
+                                    INNER JOIN login l on l.id_login = p.cid
+                                    WHERE p.cid = '" . $id . "' order by date DESC ";
                                     // $q = "SELECT * from payslip";
                                     $qr = @mysqli_query($condb, $q);
 
@@ -150,14 +153,14 @@ function page_navi($before_p, $plus_p, $total, $total_p, $chk_page)
                                             <td><a class="table-bt" href="edit_price_user.php?itemId=<?= $rs['cid']; ?>" role="button"><?php echo $rs['id']; ?></a></td>
                                             <td><?php echo $rs['date']; ?></td>
                                             <td><?php echo $rs['id_num']; ?></td>
-                                            <td><?php echo $rs['title']; ?></td>
+                                            <td><?php echo $rs['pname']; ?></td>
                                             <td><?php echo $rs['name']; ?></td>
                                             <td><?php echo $rs['cid']; ?></td>
-                                            <td><?php echo $rs['bank_id']; ?></td>
+                                            <td><?php echo $rs['booking_id']; ?></td>
                                             <td><?php echo $rs['txtoffice']; ?></td>
                                             <td><?php echo $rs['salary']; ?></td>
                                             <td>
-                                                <a type="button" class="table-bt fa-solid fa-pen ml-2" href="edit_price_user.php?itemId=<?= $rs['id_num']; ?>" role="button" style="color:gold;">
+                                                <a type="button" class="table-bt fa-solid fa-pen ml-2" href="edit_price_user.php?itemId=<?= $rs['cid']; ?>" role="button" style="color:gold;">
                                                 </a>
                                             </td>
 

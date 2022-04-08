@@ -14,7 +14,7 @@ if ($sess_id == "") {
 
 <!-- Main  -->
 
-<div class="container mt-5">
+<div class="container mt-5 ">
 
     <h3 class="text-center">
         <span class="text-center text-success"><strong>รายชื่อบุคลากร ที่สามารถใช้งานระบบ Slip ภายในโรงพยาบาล ได้</strong></span><!-- Main component for a primary marketing message or call to action --><br>
@@ -135,7 +135,9 @@ if ($sess_id == "") {
 
 
 
-<?php include "./components/footer.php" ?>
+
+
+<?php  include "./components/footer.php" ?>
 
 
 

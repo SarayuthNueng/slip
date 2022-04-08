@@ -8,7 +8,6 @@ $id = $itemId;
 $sql_show = "SELECT * from payslip   WHERE cid = '" . $id . "'";
 $result_show = mysqli_query($condb, $sql_show) or die(mysqli_error($condb));
 $row_show = mysqli_fetch_array($result_show);
-
 $sess_id = $itemId;
 ?>
 
@@ -24,67 +23,71 @@ $sess_id = $itemId;
   <div class=" mt-4 col-md-12 ">
     <form class="mb-3" name="form1" method="post" action="check_edit_price_user.php">
       <div class="row">
-        <div class="col-4 form-group mb-3">
+        <div class="col-3 form-group mb-3">
           <label>เลขที่</label>
           <input class="form-control" type="text" class="form-control" value="<?= $row_show['id_num'] ?>" name="id_num" id="id_num" readonly placeholder="เลขที่">
         </div>
-        <div class="col-4 form-group mb-3">
+        <div class="col-3 form-group mb-3">
           <label>เลขที่บัตรประชาชน</label>
           <input class="form-control" type="text" class="form-control" value="<?= $row_show['cid'] ?>" name="cid" id="cid" readonly placeholder="เลขที่บัตรประชาชน">
         </div>
-        <div class="col-4 form-group mb-3">
+        <div class="col-3 form-group mb-3">
           <label>ชื่อ - สกุล</label>
           <input class="form-control" type="text" class="form-control" value="<?= $row_show['name'] ?>" name="name" id="name" readonly placeholder="ชื่อ - สกุล">
+        </div>
+        <div class="col-3 form-group mb-3">
+          <label>เลขที่บัญชี</label>
+          <input class="form-control" type="text" class="form-control" value="<?= $row_show['booking_id'] ?>" name="booking_id" id="booking_id" required placeholder="เลขที่บัญชี">
         </div>
       </div>
       <div class="row">
         <div class="col-4 form-group mb-3">
           <label>เงินเดือน</label>
-          <input class="form-control" type="text" class="form-control" value="" name="sarary" id="sarary" required placeholder="เงินเดือน">
+          <input class="form-control" type="text" class="form-control" value="<?= $row_show['salary'] ?>" name="salary" id="salary" required placeholder="เงินเดือน">
         </div>
         <div class="col-4 form-group mb-3">
           <label>ประกันสังคม 5%</label>
-          <input class="form-control" value="" name="social" id="social" required placeholder="ประกันสังคม 5%">
+          <input class="form-control" value="<?= $row_show['social'] ?>" name="social" id="social" required placeholder="ประกันสังคม 5%">
         </div>
         <div class="col-4 form-group mb-3">
           <label>พกส.</label>
-          <input class="form-control" value="" name="pks" id="pks" required placeholder="พกส.">
+          <input class="form-control" value="<?= $row_show['pks'] ?>" name="pks" id="pks" required placeholder="พกส.">
         </div>
         
       </div>
       <div class="row">
         <div class="col-4 form-group mb-3">
           <label>กรอ. , กยศ.</label>
-          <input class="form-control" type="text" class="form-control" value="" name="borrow" id="borrow" required placeholder="กรอ. , กยศ.">
+          <input class="form-control" type="text" class="form-control" value="<?= $row_show['borrow'] ?>" name="borrow" id="borrow" required placeholder="กรอ. , กยศ.">
         </div>
         <div class="col-4 form-group mb-3">
           <label>ขยะ</label>
-          <input class="form-control" value="" name="bin" id="bin" required placeholder="ขยะ">
+          <input class="form-control" value="<?= $row_show['bin'] ?>" name="bin" id="bin" required placeholder="ขยะ">
         </div>
         <div class="col-4 form-group mb-3">
           <label>สะอาด</label>
-          <input class="form-control" value="" name="clean" id="clean" required placeholder="สะอาด">
+          <input class="form-control" value="<?= $row_show['clean'] ?>" name="clean" id="clean" required placeholder="สะอาด">
         </div>
         
       </div>
       <div class="row">
         <div class="col-4 form-group mb-3">
           <label>สหกรณ์ออมทรัพย์</label>
-          <input class="form-control" type="text" class="form-control" value="" name="cooperative" id="cooperative" required placeholder="สหกรณ์ออมทรัพย์">
+          <input class="form-control" type="text" class="form-control" value="<?= $row_show['cooperative'] ?>" name="cooperative" id="cooperative" required placeholder="สหกรณ์ออมทรัพย์">
         </div>
         <div class="col-4 form-group mb-3">
           <label>คงเหลือ</label>
-          <input class="form-control" value="" name="balance" id="balance" required placeholder="คงเหลือ">
+          <input class="form-control" value="<?= $row_show['balance'] ?>" name="balance" id="balance" required placeholder="คงเหลือ">
         </div>
         <div class="col-4 form-group mb-3">
           <label>หมายเหตุ</label>
-          <input class="form-control" value="" name="remark" id="remark" required placeholder="หมายเหตุ">
+          <input class="form-control"value="<?= $row_show['remark'] ?>" name="remark" id="remark" required placeholder="หมายเหตุ">
         </div>
         
       </div>
 
       <div class="mt-4 text-center form-group justify-content-between">
-        <a href="data_user.php" type="button" name="Submit" value="Login" class="btn btn-danger btn-block" role="button">ย้อนกลับ</a>
+        <a href="data_user.php?itemId=<?= $row_show['cid']; ?>" type="button" name="Submit" value="Login" class="btn btn-danger btn-block" role="button">ย้อนกลับ</a>
         <button type="submit" name="btn2" id="btn2" class="btn btn-primary btn-block" role="button">ตกลง</button>
       </div>
     </form>

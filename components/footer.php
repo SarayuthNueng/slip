@@ -1,10 +1,10 @@
-<footer class="mt-4 mb-5 my-4 footer ">
+<!-- <footer class=" footer ">
     <ul class="nav justify-content-center border-bottom pb-3 ">
     </ul>
     <p class="mt-4 text-center text-muted" style="font-weight: bold; font-size: 12px;">2022 &copy; งานเทคโนโลยีสารสนเทศ - โรงพยาบาลสมเด็จ
     </p>
-    <p class="text-center text-muted" style="font-weight: bold; font-size: 12px;"> นายนรากร ศิริกุล (ต้น) | นายศรายุทธ นวะศรี (หนึ่ง) นักวิชาการคอมพิวเตอร์ </p>
-</footer>
+    <p class="mb-4 text-center text-muted" style="font-weight: bold; font-size: 12px;"> นายนรากร ศิริกุล (ต้น) | นายศรายุทธ นวะศรี (หนึ่ง) นักวิชาการคอมพิวเตอร์ </p>
+</footer> -->
 
 
 
@@ -24,7 +24,12 @@
     <p class="text-center text-muted" style="font-weight: bold; font-size: 12px;"> นายนรากร ศิริกุล (ต้น) | นายศรายุทธ นวะศรี (หนึ่ง) นักวิชาการคอมพิวเตอร์ </p>
 </footer> -->
 
-  
+<footer class="footer mt-5 py-3 bg-light">
+  <div class="container">
+    <span class="text-muted"><p>2022 &copy; งานเทคโนโลยีสารสนเทศ - โรงพยาบาลสมเด็จ</p></span>
+    <span class="text-muted"><p>นายนรากร ศิริกุล (ต้น) | นายศรายุทธ นวะศรี (หนึ่ง) นักวิชาการคอมพิวเตอร์</p></span>
+  </div>
+</footer>
 
 
 

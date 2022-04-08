@@ -25,3 +25,13 @@ h1,h2,h3{
 .nav-link:hover {
   color: #198754 !important ;
 }
+
+@media (min-width: 375px) { 
+  footer{
+    position: inherit;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+  }
+ }
