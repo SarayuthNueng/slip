@@ -24,7 +24,7 @@
     <p class="text-center text-muted" style="font-weight: bold; font-size: 12px;"> นายนรากร ศิริกุล (ต้น) | นายศรายุทธ นวะศรี (หนึ่ง) นักวิชาการคอมพิวเตอร์ </p>
 </footer> -->
 
-<footer class="footer mt-5 py-3 bg-light">
+<footer class="footer mt-5 py-3 bg-light ">
   <div class="container">
     <span class="text-muted"><p>2022 &copy; งานเทคโนโลยีสารสนเทศ - โรงพยาบาลสมเด็จ</p></span>
     <span class="text-muted"><p>นายนรากร ศิริกุล (ต้น) | นายศรายุทธ นวะศรี (หนึ่ง) นักวิชาการคอมพิวเตอร์</p></span>

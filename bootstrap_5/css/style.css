@@ -9,7 +9,6 @@ h1,h2,h3{
 }
 
 .footer {
-    position: absolute;
     left: 0;
     bottom: 0;
     width: 100%;
@@ -26,12 +25,34 @@ h1,h2,h3{
   color: #198754 !important ;
 }
 
-@media (min-width: 375px) { 
+@media screen and (max-width: 500px) and (min-width: 376px) { 
   footer{
-    position: inherit;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
+        position: fixed; 
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
   }
- }
+}
+
+
+@media screen and (max-width: 1000px) and (min-width: 700px) { 
+  footer{
+        position: fixed; 
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+  }
+}
+
+@media screen and (max-width: 2000px) and (min-width: 1281px) { 
+  footer{
+        position: fixed; 
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+  }
+}
+
