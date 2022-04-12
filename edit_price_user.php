@@ -81,7 +81,7 @@ $sess_id = $itemId;
         </div>
         <div class="col-4 form-group mb-3">
           <label>หมายเหตุ</label>
-          <input class="form-control"value="<?= $row_show['remark'] ?>" name="remark" id="remark" required placeholder="หมายเหตุ">
+          <input class="form-control"value="<?= $row_show['remark'] ?>" name="remark" id="remark"  placeholder="หมายเหตุ">
         </div>
         
       </div>
